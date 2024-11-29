@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:library_app/Features/register/presentation/view/widgets/my_text_field.dart';
 import 'package:library_app/constants.dart';
 import 'package:library_app/core/utils/firebase_service.dart';
 
-import '../../../../core/utils/assets.dart';
+import '../../../../core/utils/app_images.dart';
 
 class RegisterScreen extends StatelessWidget {
   const RegisterScreen({super.key});
@@ -29,10 +28,10 @@ class RegisterScreen extends StatelessWidget {
             child: SizedBox(
               width: 300,
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
+                crossAxisAlignment:CrossAxisAlignment.stretch,
+                children:[
                   Image.asset(
-                    AssetsData.logo,
+                    AppImages.logo,
                     height: 150,
                   ),
                   TextFormField(
@@ -43,13 +42,26 @@ class RegisterScreen extends StatelessWidget {
                       decoration: InputDecoration(
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(25)),
-                          label: const Text("name")),
+                          label: const Text("User Name")),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return "please Enter Your Name";
                         }
                         return null;
                       }),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  TextFormField(
+                      controller: ageTextEditingController,
+                      onChanged: (value){
+                        print(value);
+                      },
+                      decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(25)),
+                          label: const Text("Age")),
+                  ),
                   const SizedBox(
                     height: 30,
                   ),
@@ -62,7 +74,7 @@ class RegisterScreen extends StatelessWidget {
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(25)),
                           label: Text("Email")),
-                      validator: (value) {
+                      validator: (value){
                         if (value == null ||
                             value.isEmpty ||
                             !RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*"
@@ -93,22 +105,6 @@ class RegisterScreen extends StatelessWidget {
                   const SizedBox(
                     height: 30,
                   ),
-                  TextFormField(
-                      controller: ageTextEditingController,
-                      keyboardType: TextInputType.number,
-                      onChanged: (value) {
-                        print(value);
-                      },
-                      decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(25)),
-                          label: Text("Age")),
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return "please Enter Your Age";
-                        }
-                        return null;
-                      }),
                   const SizedBox(
                     height: 30,
                   ),
@@ -167,7 +163,7 @@ class RegisterScreen extends StatelessWidget {
                                 int.parse(ageTextEditingController.text),
                                 emailTextEditingController.text,
                                 passwordTextEditingController.text,
-                                () => GoRouter.of(context).pop(), () {
+                                () => GoRouter.of(context).pop(),(){
                               showDialog(
                                 context: context,
                                 barrierDismissible: false,

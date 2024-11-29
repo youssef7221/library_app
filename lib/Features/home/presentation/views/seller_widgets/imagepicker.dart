@@ -44,10 +44,8 @@ class _ImagePickeRState extends State<ImagePickeR> {
             ),
           ),
           const  SizedBox(width: 10,),
-
           imageFile==null?const Text('null'):Text(truncateText(imageFile!.name, 15),
           ),
-
           Icon(Icons.image,size: 35,)
         ],
       ),
@@ -68,7 +66,6 @@ class _ImagePickeRState extends State<ImagePickeR> {
     setState(() {
       imageFile = img;
     });
-
   }
 
 }

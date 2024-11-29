@@ -1,16 +1,12 @@
 import 'package:library_app/Features/home/data/repos/home_repo_impl.dart';
 import 'package:library_app/Features/home/presentation/manger/featured_books_cubit/featured_books_cubit.dart';
 import 'package:library_app/Features/home/presentation/manger/newest_books_cubit/newset_books_cubit.dart';
-import 'package:library_app/constants.dart';
-import 'package:library_app/core/utils/api_service.dart';
 import 'package:library_app/core/utils/app_router.dart';
+import 'package:library_app/core/utils/password_cubit/password_cubit.dart';
 import 'package:library_app/core/utils/service_locator.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'Features/Splash/presentation/views/splash_view.dart';
 import 'firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 void main() async{
@@ -29,6 +25,7 @@ class library_app extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        BlocProvider(create: (context) => PasswordCubit() ,),
         BlocProvider(
           create: (context) => FeaturedBooksCubit(
             getIt.get<HomeRepoImpl>(),
@@ -44,7 +41,7 @@ class library_app extends StatelessWidget {
         routerConfig: AppRouter.router,
         debugShowCheckedModeBanner: false,
         theme: ThemeData.dark().copyWith(
-          scaffoldBackgroundColor: kPrimaryColor,
+          scaffoldBackgroundColor: Colors.white.withOpacity(0.99),
           textTheme:
               GoogleFonts.montserratTextTheme(ThemeData.dark().textTheme),
         ),

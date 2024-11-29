@@ -1,46 +1,29 @@
-import 'package:library_app/core/utils/styles.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+
+import '../utils/app_color.dart';
+import '../utils/app_fonts.dart';
 
 class CustomButton extends StatelessWidget {
-  const CustomButton({
-    super.key,
-    required this.backgroundColor,
-    required this.textColor,
-    this.borderRadius,
-    required this.text,
-    this.fontSize,
-    this.onPressed,
+  const CustomButton({super.key, required this.text,
   });
   final String text;
-  final Color backgroundColor;
-  final Color textColor;
-  final BorderRadius? borderRadius;
-  final double? fontSize;
-  final void Function()? onPressed;
+
+
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 48,
-      child: TextButton(
-        onPressed: onPressed,
-        style: TextButton.styleFrom(
-          backgroundColor: backgroundColor,
-          shape: RoundedRectangleBorder(
-            borderRadius: borderRadius ??
-                BorderRadius.circular(
-                  12,
-                ),
+    return InkWell(
+      child: Center(
+        child: Container(
+          height: 55,
+          width: 190,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(colors:[
+              AppColors.primaryColor,
+              AppColors.primaryColor
+            ]),
+              borderRadius: BorderRadius.circular(20)
           ),
-        ),
-        child: Text(
-          text,
-          style: Styles.textStyle18.copyWith(
-            color: textColor,
-            fontWeight: FontWeight.w900,
-            fontSize: fontSize,
-          ),
+          child: Center(child: Text(text,style: AppFonts.buttonFont,)),
         ),
       ),
     );

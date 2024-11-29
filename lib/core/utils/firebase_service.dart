@@ -8,7 +8,8 @@ class FirebaseService{
   static CollectionReference<UserModel> getUsersCollection() {
     return FirebaseFirestore.instance
         .collection("Users")
-        .withConverter<UserModel>(fromFirestore: (snapshot, _) {
+        .withConverter<UserModel>(fromFirestore: (snapshot,
+        _) {
       return UserModel.fromjson(snapshot.data()!);
     }, toFirestore: (value, _) {
       return value.tojson();
@@ -57,8 +58,8 @@ class FirebaseService{
 
   static Future<void> addSellerCollection(SellerModel seller) {
     var collections = getSellerCollection();
-    var Doc = collections.doc(seller.id);
-    return Doc.set(seller);
+    var doc = collections.doc(seller.id);
+    return doc.set(seller);
   }
 
   static Future<void> createSeller(String name, int age, String email,
@@ -93,8 +94,9 @@ class FirebaseService{
       );
       onSuccess();
     } on FirebaseAuthException catch (e) {
-      if(e.message == 'The supplied auth credential is incorrect, malformed or has expired.')
+      if(e.message == 'The supplied auth credential is incorrect, malformed or has expired.') {
         onError("Invalid Email or Password");
+      }
     }
   }
 
