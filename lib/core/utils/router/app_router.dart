@@ -5,13 +5,12 @@ import 'package:library_app/Features/home/presentation/views/book_details_view.d
 import 'package:library_app/Features/home/presentation/views/home_view.dart';
 import 'package:library_app/Features/login/presentation/view/login_screen.dart';
 import 'package:library_app/Features/register/presentation/view/register_screen.dart';
-import 'package:library_app/Features/search/presentation/views/search_view.dart';
 import 'package:library_app/core/utils/service_locator.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../Features/Splash/presentation/splash_screen.dart';
-import '../../Features/home/seller_view.dart';
+import '../../../Features/Splash/presentation/splash_screen.dart';
+import '../../../Features/home/seller_view.dart';
 
 abstract class AppRouter {
   static const kHomeView = '/homeView';

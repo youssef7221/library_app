@@ -1,5 +1,8 @@
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:library_app/constants.dart';
 import 'package:library_app/core/utils/app_images.dart';
+import 'package:library_app/core/utils/flutter_secure/flutter_secure.dart';
+import 'package:library_app/core/utils/model/userdm.dart';
 import 'package:library_app/core/utils/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -8,11 +11,30 @@ import 'best_seller_list_view_item.dart';
 import 'custom_app_bar.dart';
 import 'featured_list_view.dart';
 
-class HomeViewBody extends StatelessWidget {
+class HomeViewBody extends StatefulWidget {
   const HomeViewBody({Key? key}) : super(key: key);
+
+  @override
+  State<HomeViewBody> createState() => _HomeViewBodyState();
+}
+
+class _HomeViewBodyState extends State<HomeViewBody> {
+  final storage = const FlutterSecureStorage();
+   UserModel? userModel ;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadUserData();
+  }
+
+  Future<void> _loadUserData() async {
+    userModel = await SecureStorageManager().readData("user");
+    setState(() {});
+  }
   @override
   Widget build(BuildContext context) {
-    return const CustomScrollView(
+    return CustomScrollView(
       physics: BouncingScrollPhysics(),
       slivers:[
         SliverToBoxAdapter(
@@ -31,7 +53,7 @@ class HomeViewBody extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 30),
                 child: Text(
-                  'Newset Books',
+                  'Welcome ${userModel?.name}',
                   style: Styles.textStyle18,
                 ),
               ),

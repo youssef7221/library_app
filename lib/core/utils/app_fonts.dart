@@ -1,4 +1,3 @@
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 
@@ -13,13 +12,13 @@ class AppFonts{
       fontWeight: FontWeight.w400
   );
 
-  static  TextStyle searchFont = GoogleFonts.montserrat(
-    fontSize: 14,
+  static  TextStyle smallFont = GoogleFonts.montserrat(
+    fontSize: 12,
     fontWeight: FontWeight.w500,
   );
 
   static  TextStyle buttonFont = GoogleFonts.montserrat(
-      fontSize: 20,
+      fontSize: 14,
       fontWeight: FontWeight.w500,
       color: Colors.white
   );

@@ -13,9 +13,10 @@ class CustomTextField extends StatelessWidget {
   final Icon? prefixIcon;
   final IconData? suffixIcon;
   final TextEditingController? controller;
-
+  final bool isConfirmPassword;
   const CustomTextField({
     super.key,
+    this.isConfirmPassword = false,
     required this.hintText,
     required this.keyboardType,
     this.obscureText = false,
@@ -27,13 +28,13 @@ class CustomTextField extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context){
     bool isObscure = context.watch<PasswordCubit>().isObscure;
     return TextFormField(
       controller: controller,
         validator: validator,
         keyboardType: keyboardType,
-        obscureText: obscureText ? isObscure : false,
+        obscureText: isConfirmPassword ? true : obscureText ? isObscure : false,
         cursorColor: AppColors.logoColor,
         decoration: InputDecoration(
           errorStyle: TextStyle(

@@ -1,16 +1,14 @@
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:library_app/core/utils/app_fonts.dart';
-import 'package:library_app/core/utils/app_router.dart';
+import 'package:library_app/core/utils/flutter_secure/flutter_secure.dart';
+import 'package:library_app/core/utils/model/userdm.dart';
+import 'package:library_app/core/utils/router/app_router.dart';
 import 'package:library_app/core/utils/app_images.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:library_app/core/utils/app_string.dart';
-
-
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
-
   @override
   State<SplashScreen> createState() => _SplashScreenState();
 }
@@ -84,11 +82,19 @@ class _SplashScreenState extends State<SplashScreen>
       ),
     );
   }
-  void navigateToHome() {
+  void navigateToHome(){
     Future.delayed(
       const Duration(seconds: 5),
-          (){
-        GoRouter.of(context).replace(AppRouter.kLoginView);
+          () async {
+      UserModel? userModel = await SecureStorageManager().readData('user');
+      if(userModel !=null) {
+        GoRouter.of(context).replace(AppRouter.kHomeView)
+      ;
+      }
+      else
+        {
+          GoRouter.of(context).replace(AppRouter.kLoginView);
+        }
       },
     );
   }
