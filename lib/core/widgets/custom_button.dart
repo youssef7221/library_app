@@ -9,7 +9,6 @@ class CustomButton extends StatelessWidget {
     required this.textColor,
     required this.buttonColor,
      this.haveIcon = false
-
   });
   final String text;
   final Color buttonColor;
@@ -30,7 +29,7 @@ class CustomButton extends StatelessWidget {
             children: [
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 15),
-                child: Icon(FontAwesomeIcons.google,size: 30,),
+                child: Icon(FontAwesomeIcons.google,size: 30,color:AppColors.grey,),
               ),
               Center(child: Text(text,style: AppFonts.buttonFont.copyWith(
                 color: textColor

@@ -7,14 +7,21 @@ class AppFonts{
       fontSize: 18,
       fontWeight: FontWeight.w500
   );
-  static  TextStyle productsFont = GoogleFonts.montserrat(
+  static  TextStyle bookFont = GoogleFonts.montserrat(
       fontSize: 16,
+      color: Colors.black,
       fontWeight: FontWeight.w400
   );
 
   static  TextStyle smallFont = GoogleFonts.montserrat(
     fontSize: 12,
     fontWeight: FontWeight.w500,
+  );
+
+  static  TextStyle boldFont = GoogleFonts.montserrat(
+    fontSize: 18,
+    fontWeight: FontWeight.bold,
+    color: AppColors.blackColor
   );
 
   static  TextStyle buttonFont = GoogleFonts.montserrat(

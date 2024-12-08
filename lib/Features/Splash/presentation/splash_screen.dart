@@ -1,12 +1,13 @@
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:library_app/core/utils/app_fonts.dart';
-import 'package:library_app/core/utils/flutter_secure/flutter_secure.dart';
 import 'package:library_app/core/utils/model/userdm.dart';
-import 'package:library_app/core/utils/router/app_router.dart';
 import 'package:library_app/core/utils/app_images.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:library_app/core/utils/app_string.dart';
+
+import '../../../core/flutter_secure/flutter_secure.dart';
+import '../../../core/router/app_router.dart';
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
   @override

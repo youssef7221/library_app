@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/auth_cubit/auth_cubit.dart';
+import '../../../../core/router/app_router.dart';
 import '../../../../core/utils/app_color.dart';
 import '../../../../core/utils/app_string.dart';
-import '../../../../core/utils/auth_cubit/auth_cubit.dart';
-import '../../../../core/utils/router/app_router.dart';
 import '../../../../core/widgets/custom_button.dart';
 
 class LoginButtons extends StatelessWidget {
@@ -22,8 +22,8 @@ class LoginButtons extends StatelessWidget {
                 .handleLogin(AppRouter.kHomeView, false, context),
             child: CustomButton(
                 text: AppString.login,
-                buttonColor: AppColors.primaryColor,
-                textColor: AppColors.whiteColor)),
+                buttonColor: AppColors.grey,
+                textColor: AppColors.primaryColor)),
         const SizedBox(
           width: 10,
         ),
@@ -35,7 +35,7 @@ class LoginButtons extends StatelessWidget {
                   .handleLogin(AppRouter.kHomeView, true, context),
           child: CustomButton(
             text: AppString.login,
-            textColor: AppColors.baseShimmer,
+            textColor: AppColors.grey,
             buttonColor: AppColors.primaryColor,
             haveIcon: true,
           ),

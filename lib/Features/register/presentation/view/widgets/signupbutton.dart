@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:library_app/core/utils/auth_cubit/auth_cubit.dart';
+import '../../../../../core/auth_cubit/auth_cubit.dart';
 import '../../../../../core/utils/app_color.dart';
 import '../../../../../core/utils/app_string.dart';
 import '../../../../../core/widgets/custom_button.dart';
@@ -20,7 +20,7 @@ class SignUpButton extends StatelessWidget {
             .handleSignUp(context),
         child: CustomButton(
           text: AppString.signUp,
-          textColor: AppColors.baseShimmer,
+          textColor: AppColors.grey,
           buttonColor: AppColors.primaryColor,
         ),
       ),

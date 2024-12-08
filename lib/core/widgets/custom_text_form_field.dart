@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../password_cubit/password_cubit.dart';
 import '../utils/app_color.dart';
-import '../utils/password_cubit/password_cubit.dart';
 
 class CustomTextField extends StatelessWidget {
   final String hintText;
@@ -37,11 +36,15 @@ class CustomTextField extends StatelessWidget {
         obscureText: isConfirmPassword ? true : obscureText ? isObscure : false,
         cursorColor: AppColors.logoColor,
         decoration: InputDecoration(
+          hintStyle: TextStyle(
+            color: AppColors.grey
+          ),
           errorStyle: TextStyle(
             color: Colors.red,
           ),
           hintText: hintText,
           prefixIcon: prefixIcon,
+          prefixIconColor: AppColors.grey,
           suffixIcon: obscureText
               ? IconButton(
             icon: Icon(

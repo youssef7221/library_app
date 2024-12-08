@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../core/router/app_router.dart';
 import '../../../../core/utils/app_color.dart';
 import '../../../../core/utils/app_fonts.dart';
 import '../../../../core/utils/app_string.dart';
-import '../../../../core/utils/router/app_router.dart';
 
 class SignUpLine extends StatelessWidget {
   const SignUpLine({super.key});

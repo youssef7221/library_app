@@ -10,6 +10,6 @@ class AppColors{
   static  Color textField = const Color(0xff999DA0).withOpacity(0.1);
   static  Color textFieldBorder = const Color(0xff999DA0).withOpacity(0.5);
   static const Color logoColor = Color(0xff4392F9);
-  static const Color baseShimmer = Color(0xFFE0E0E0);
+  static const Color grey = Color(0xFFE0E0E0);
   static const Color highlightedShimmer = Color(0xFFF5F5F5);
 }

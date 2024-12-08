@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:library_app/Features/login/presentation/widgets/loginbuttons.dart';
 import 'package:library_app/Features/login/presentation/widgets/signupline.dart';
-import '../../../../core/utils/auth_cubit/auth_cubit.dart';
+import '../../../../core/auth_cubit/auth_cubit.dart';
 import '../../../../core/utils/validators.dart';
 import '../../../../core/widgets/custom_text_form_field.dart';
 import '../../../../core/widgets/logo.dart';
