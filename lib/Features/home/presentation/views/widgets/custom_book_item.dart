@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import '../../../../../core/utils/app_images.dart';
 
 class CustomBookImage extends StatelessWidget {
-  const CustomBookImage({Key? key, required this.imageUrl}) : super(key: key);
+  const CustomBookImage({super.key, required this.imageUrl});
 
   final String imageUrl;
   @override

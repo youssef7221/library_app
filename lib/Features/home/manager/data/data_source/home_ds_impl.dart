@@ -25,6 +25,8 @@ class HomeDsImpl extends HomeDs {
           // Add fetched items to the list
           List<BookModel> books = (data['items'] as List<dynamic>)
               .map((item) => BookModel.fromJson(item))
+              .where
+            ((item) =>item.volumeInfo.pageCount! > 0)
               .toList();
           allBooks.addAll(books);
           // Check if there are more items to fetch
@@ -68,8 +70,8 @@ class HomeDsImpl extends HomeDs {
               .toList();
           allBooks.addAll(books);
           startIndex += maxResultsPerRequest;
-          hasMore = startIndex < (20);
-        } else {
+          hasMore = startIndex < (60);
+        } else{
           hasMore = false; // No more items
         }
       }
@@ -103,12 +105,12 @@ class HomeDsImpl extends HomeDs {
         if (data['items'] != null){
           List<BookModel> books = (data['items'] as List<dynamic>)
               .map((item) => BookModel.fromJson(item)).where
-            ((item) => item.volumeInfo.pageCount! <= 200)
+            ((item) => item.volumeInfo.pageCount! <= 200 && item.volumeInfo.pageCount! > 0)
               .toList();
           allBooks.addAll(books);
           // Check if there are more items to fetch
           startIndex += maxResultsPerRequest;
-          hasMore = startIndex < (20);
+          hasMore = startIndex < (40);
         } else {
           hasMore = false; // No more items
         }

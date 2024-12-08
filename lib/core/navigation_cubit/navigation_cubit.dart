@@ -30,14 +30,14 @@ class NavigationCubit extends Cubit<NavigationState> {
       ),
       PersistentBottomNavBarItem(
         icon:const Icon(Icons.favorite),
-        title: ("vini"),
+        title: ("Favourites"),
         activeColorPrimary: AppColors.primaryColor,
         inactiveColorPrimary: AppColors.blackColor,
         activeColorSecondary: Colors.white,
       ),
       PersistentBottomNavBarItem(
-          icon:const Icon(Icons.favorite),
-          title: ("A7a"),
+          icon:const Icon(Icons.settings),
+          title: ("Settings"),
           activeColorPrimary: AppColors.primaryColor,
           inactiveColorPrimary: AppColors.blackColor,
           activeColorSecondary: Colors.white
