@@ -9,33 +9,35 @@ part 'featured_books_state.dart';
 
 class FeaturedBooksCubit extends Cubit<FeaturedBooksState> {
   FeaturedBooksCubit() : super(FeaturedBooksInitial());
-  final List<BookModel>featuredBooks = [];
-  final List<BookModel>smallFeaturedBooks = [];
+  final List<BookModel> featuredBooks = [];
+  final List<BookModel> smallFeaturedBooks = [];
 
   final featuredBooksUseCase = getIt<FeaturedBooksUseCase>();
   final smallFeaturedBooksUseCase = getIt<SmallFeaturedBookUseCase>();
-  Future<void> fetchFeaturedBooks() async{
+
+  Future<void> fetchFeaturedBooks() async {
     emit(FeaturedBooksLoading());
     var result = await featuredBooksUseCase.call();
     result.fold(
-          (failure) {
+      (failure) {
         emit(FeaturedBooksFailure(failure.errMessage));
       },
-          (books){
-            featuredBooks.addAll(books);
+      (books) {
+        featuredBooks.addAll(books);
         emit(FeaturedBooksSuccess());
       },
     );
   }
-  Future<void> fetchSmallFeaturedBooks() async{
+
+  Future<void> fetchSmallFeaturedBooks() async {
     emit(SmallFeaturedBooksLoading());
     var result = await smallFeaturedBooksUseCase.call();
     result.fold(
-          (failure) {
+      (failure) {
         emit(FeaturedBooksFailure(failure.errMessage));
       },
-          (books){
-            smallFeaturedBooks.addAll(books);
+      (books) {
+        smallFeaturedBooks.addAll(books);
         emit(SmallFeaturedBooksSuccess());
       },
     );

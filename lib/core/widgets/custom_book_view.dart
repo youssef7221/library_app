@@ -23,7 +23,7 @@ class CustomBookView extends StatelessWidget {
           children:[
             Hero(
               tag: "thumbnail${books?.id}",
-              child: CustomBookImage(
+              child:CustomBookImage(
                 imageUrl: books?.volumeInfo.imageLinks?.thumbnail ?? '',
               ),
             ),

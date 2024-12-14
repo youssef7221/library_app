@@ -9,11 +9,11 @@ import '../../../../core/widgets/logo.dart';
 
 class LoginForm extends StatelessWidget {
   const LoginForm({super.key});
-
   @override
   Widget build(BuildContext context) {
+   final cubit = context.read<AuthCubit>();
     return  Form(
-      key: context.read<AuthCubit>().formKey,
+      key: cubit.formKey,
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 50),
         child: Center(
@@ -35,10 +35,10 @@ class LoginForm extends StatelessWidget {
                 child: CustomTextField(
                   hintText: "Enter Your Email",
                   prefixIcon: const Icon(Icons.person),
-                  controller: context
-                      .read<AuthCubit>()
+                  controller: cubit
                       .emailTextEditingController,
                   validator: Validators.emailValidate,
+                  focusNode: cubit.focusNode,
                   keyboardType: TextInputType.text,
                 ),
               ),
@@ -53,8 +53,7 @@ class LoginForm extends StatelessWidget {
                   prefixIcon: const Icon(Icons.lock),
                   obscureText: true,
                   keyboardType: TextInputType.text,
-                  controller: context
-                      .read<AuthCubit>()
+                  controller: cubit
                       .passwordTextEditingController, // Use the `controller` parameter
                 ),
               ),

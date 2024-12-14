@@ -15,11 +15,13 @@ class LoginButtons extends StatelessWidget {
     final state = context.watch<AuthCubit>().state;
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: [
+      children:[
         InkWell(
-            onTap: () => context
-                .read<AuthCubit>()
-                .handleLogin(AppRouter.kHomeView, false, context),
+            onTap: () {
+              context
+                  .read<AuthCubit>()
+                  .handleLogin(AppRouter.kHomeView, false, context);
+            },
             child: CustomButton(
                 text: AppString.login,
                 buttonColor: AppColors.grey,

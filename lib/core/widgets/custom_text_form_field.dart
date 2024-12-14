@@ -12,6 +12,7 @@ class CustomTextField extends StatelessWidget {
   final Icon? prefixIcon;
   final IconData? suffixIcon;
   final TextEditingController? controller;
+  final FocusNode? focusNode;
   final bool isConfirmPassword;
   const CustomTextField({
     super.key,
@@ -23,7 +24,8 @@ class CustomTextField extends StatelessWidget {
     this.onSaved,
     this.controller,
     this.prefixIcon,
-    this.suffixIcon,
+    this.suffixIcon ,
+    this.focusNode,
   });
 
   @override
@@ -32,6 +34,7 @@ class CustomTextField extends StatelessWidget {
     return TextFormField(
       controller: controller,
         validator: validator,
+        focusNode: focusNode,
         keyboardType: keyboardType,
         obscureText: isConfirmPassword ? true : obscureText ? isObscure : false,
         cursorColor: AppColors.logoColor,

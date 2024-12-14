@@ -11,7 +11,7 @@ class BooksAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      children: [
+      children:[
         Container(
           decoration: BoxDecoration(
             color: AppColors.whiteColor,

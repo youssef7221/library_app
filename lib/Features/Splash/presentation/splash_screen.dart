@@ -17,11 +17,10 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen>
     with SingleTickerProviderStateMixin {
   @override
-  void initState() {
+  void initState(){
     super.initState();
     navigateToHome();
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

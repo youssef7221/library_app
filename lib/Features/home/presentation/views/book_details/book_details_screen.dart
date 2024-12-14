@@ -13,7 +13,7 @@ class BookDetailsScreen extends StatelessWidget {
   final BookModel selectedBook;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context){
     return Scaffold(
       body: Stack(
         children: [
@@ -36,7 +36,7 @@ class BookDetailsScreen extends StatelessWidget {
                   height: 10,
                 ),
                 Hero(
-                    tag: "thumbnail${selectedBook.id}",
+                  tag: "thumbnail${selectedBook.id}",
                   child: SizedBox(
                     width: MediaQuery.of(context).size.width * .5,
                     height: MediaQuery.of(context).size.height * .35,
@@ -66,7 +66,8 @@ class BookDetailsScreen extends StatelessWidget {
                   height: 10,
                 ),
                 BuyNowWidget(
-                    price: selectedBook.saleInfo?.listPrice?.amount?.truncate())
+                  selectedBook: selectedBook,
+                )
               ],
             ),
           ),
