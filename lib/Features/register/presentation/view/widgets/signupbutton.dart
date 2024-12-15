@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../../core/auth_cubit/auth_cubit.dart';
+import '../../../../../core/shared_cubits/auth_cubit/auth_cubit.dart';
 import '../../../../../core/utils/app_color.dart';
 import '../../../../../core/utils/app_string.dart';
 import '../../../../../core/widgets/custom_button.dart';

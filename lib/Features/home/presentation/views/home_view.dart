@@ -1,8 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:library_app/core/navigation_cubit/navigation_cubit.dart';
 import 'package:library_app/core/service_locator/service_locator.dart';
 
+import '../../../../core/shared_cubits/navigation_cubit/navigation_cubit.dart';
 import '../../../../core/widgets/bottom_navbar.dart';
 
 class HomeView extends StatelessWidget {

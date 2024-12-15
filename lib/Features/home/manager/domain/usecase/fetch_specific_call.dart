@@ -7,7 +7,7 @@ import '../repos/home_repo.dart';
 class FetchSpecificCall{
   HomeRepo homeRepo;
   FetchSpecificCall(this.homeRepo);
-  Future<Either<Failure, BookModel>>call(String bookId){
+  Future<Either<Failure, BookModel>>call(String? bookId){
     return homeRepo.fetchSpecificBook(bookId: bookId);
   }
 }

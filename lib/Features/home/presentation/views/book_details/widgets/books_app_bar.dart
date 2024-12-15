@@ -40,6 +40,7 @@ class BooksAppBar extends StatelessWidget {
                       fontWeight: FontWeight.bold),
                   textAlign: TextAlign.center,
                   maxLines: 3,
+                  overflow: TextOverflow.ellipsis,
                 ),
               ),
               const SizedBox(height: 5),

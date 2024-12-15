@@ -25,7 +25,7 @@ class HomeRepoImpl implements HomeRepo {
   }
 
   @override
-  Future<Either<Failure, BookModel>> fetchSpecificBook({required String bookId}) {
+  Future<Either<Failure, BookModel>> fetchSpecificBook({required String? bookId}) {
     return homeDs.fetchSpecificBook(bookId);
   }
 

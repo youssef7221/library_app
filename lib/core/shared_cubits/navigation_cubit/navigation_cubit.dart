@@ -8,9 +8,8 @@ import 'package:library_app/core/service_locator/service_locator.dart';
 import 'package:meta/meta.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 
-import '../utils/app_color.dart';
-import '../utils/app_string.dart';
-import '../utils/model/userdm.dart';
+import '../../utils/app_color.dart';
+import '../../utils/model/userdm.dart';
 
 part 'navigation_state.dart';
 

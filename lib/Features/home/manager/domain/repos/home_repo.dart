@@ -12,5 +12,5 @@ abstract class HomeRepo {
       {required String book});
 
   Future<Either<Failure, BookModel>> fetchSpecificBook(
-      {required String bookId});
+      {required String? bookId});
 }

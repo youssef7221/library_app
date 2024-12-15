@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:library_app/core/utils/app_color.dart';
 
-import '../../../../../../../core/book_model/MyBookModelHive.dart';
 import '../../../../../../../core/shared_cubits/user_books_hive/user_books_ld_cubit.dart';
-import '../../../../../../../core/user_cubit/user_cubit.dart';
+import '../../../../../../../core/shared_cubits/user_cubit/user_cubit.dart';
 import '../../../../../../../core/utils/app_fonts.dart';
 
 class RemoveDialog {

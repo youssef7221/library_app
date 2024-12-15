@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:library_app/Features/login/presentation/widgets/loginform.dart';
-import '../../../../core/auth_cubit/auth_cubit.dart';
-import '../../../../core/auth_cubit/auth_state.dart';
 import '../../../../core/loading_overlay/loadingoverlay.dart';
-import '../../../../core/password_cubit/password_cubit.dart';
 import '../../../../core/service_locator/service_locator.dart';
+import '../../../../core/shared_cubits/auth_cubit/auth_cubit.dart';
+import '../../../../core/shared_cubits/auth_cubit/auth_state.dart';
+import '../../../../core/shared_cubits/password_cubit/password_cubit.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});

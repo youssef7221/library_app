@@ -1,5 +1,6 @@
 import 'package:library_app/Features/home/presentation/views/book_details/book_details_screen.dart';
 import 'package:library_app/Features/home/presentation/views/home_view.dart';
+import 'package:library_app/Features/home/presentation/views/payment_screen/payment_methods_screen.dart';
 import 'package:library_app/Features/login/presentation/view/login_screen.dart';
 import 'package:library_app/Features/register/presentation/view/register_screen.dart';
 import 'package:go_router/go_router.dart';
@@ -13,6 +14,8 @@ abstract class AppRouter {
   static const kLoginView = '/login';
   static const kRegisterView = '/register';
   static const kHomeDetailsView = '/homeDetailsView';
+  static const kPaymentView = '/paymentView';
+
   static final router = GoRouter(routes: [
     GoRoute(
       path: '/',
@@ -33,6 +36,13 @@ abstract class AppRouter {
     GoRoute(
       path: kRegisterView,
       builder: (context, state) => const RegisterScreen(),
+    ),
+    GoRoute(
+      path: kPaymentView,
+      builder: (context, state) {
+        final BookModel selectedBook = state.extra as BookModel;
+       return PaymentMethodsScreen(selectedBook: selectedBook);
+      },
     ),
     GoRoute(
         path: AppRouter.kHomeDetailsView,

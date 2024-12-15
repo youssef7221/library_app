@@ -1,18 +1,16 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:go_router/go_router.dart';
 import 'package:library_app/core/service_locator/service_locator.dart';
-import 'package:library_app/core/user_cubit/user_cubit.dart';
-
-import '../auth_firebase/auth_firebase.dart';
-import '../firebase_service/firebase_service.dart';
-import '../flutter_secure/flutter_secure.dart';
-import '../router/app_router.dart';
-import '../utils/app_color.dart';
-import '../utils/app_fonts.dart';
-import '../utils/model/userdm.dart';
+import '../../auth_firebase/auth_firebase.dart';
+import '../../firebase_service/firebase_service.dart';
+import '../../flutter_secure/flutter_secure.dart';
+import '../../router/app_router.dart';
+import '../../utils/app_color.dart';
+import '../../utils/app_fonts.dart';
+import '../../utils/model/userdm.dart';
+import '../user_cubit/user_cubit.dart';
 import 'auth_state.dart';
 
 class AuthCubit extends Cubit<AuthState> {

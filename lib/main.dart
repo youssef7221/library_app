@@ -1,5 +1,4 @@
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:library_app/Features/home/manager/domain/usecase/featured_books_use_case.dart';
 import 'package:library_app/Features/home/presentation/manger/featured_books_cubit/featured_books_cubit.dart';
 import 'package:library_app/core/hive_service/hive_service.dart';
 import 'package:library_app/core/service_locator/service_locator.dart';
@@ -8,12 +7,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:library_app/core/shared_cubits/user_books_hive/user_books_ld_cubit.dart';
-import 'package:library_app/core/user_cubit/user_cubit.dart';
 
-import 'Features/home/manager/data/repos/home_repo_impl.dart';
-import 'core/book_model/MyBookModelHive.dart';
 import 'core/observer/my_bloc_observer.dart';
 import 'core/router/app_router.dart';
+import 'core/shared_cubits/user_cubit/user_cubit.dart';
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();

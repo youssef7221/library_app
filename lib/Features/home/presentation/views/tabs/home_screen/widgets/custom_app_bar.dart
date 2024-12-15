@@ -12,16 +12,6 @@ class CustomAppBar extends StatelessWidget {
       child: Row(
         children:[
           SearchWidget()
-          // IconButton(
-          //     onPressed: () async{
-          //       GoRouter.of(context).replace(AppRouter.kLoginView);
-          //       flutterSecureStorage.delete(key: 'user');
-          //       await FirebaseAuth.instance.signOut();
-          //     },
-          //     icon: const Icon(
-          //       Icons.logout,
-          //       size: 22,
-          //     ))
         ],
       ),
     );

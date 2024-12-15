@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../password_cubit/password_cubit.dart';
+import '../shared_cubits/password_cubit/password_cubit.dart';
 import '../utils/app_color.dart';
 
 class CustomTextField extends StatelessWidget {

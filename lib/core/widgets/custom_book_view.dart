@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:library_app/Features/home/presentation/views/widgets/custom_book_item.dart';
+import 'package:library_app/core/widgets/custom_book_item.dart';
 import 'package:library_app/core/router/app_router.dart';
 import 'package:library_app/core/utils/app_color.dart';
 import 'package:library_app/core/utils/app_fonts.dart';

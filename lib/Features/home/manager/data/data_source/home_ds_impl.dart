@@ -134,7 +134,7 @@ class HomeDsImpl extends HomeDs {
   }
 
   @override
-  Future<Either<Failure, BookModel>> fetchSpecificBook(String bookId) async {
+  Future<Either<Failure, BookModel>> fetchSpecificBook(String? bookId) async {
     try {
       final data = await apiService.get(
         endPoint: 'volumes/$bookId',

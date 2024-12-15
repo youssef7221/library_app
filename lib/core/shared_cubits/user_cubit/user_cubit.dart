@@ -1,10 +1,9 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:library_app/core/flutter_secure/flutter_secure.dart';
 import 'package:library_app/core/service_locator/service_locator.dart';
-import 'package:library_app/core/user_cubit/user_state.dart';
-import 'package:meta/meta.dart';
+import 'package:library_app/core/shared_cubits/user_cubit/user_state.dart';
+import '../../utils/model/userdm.dart';
 
-import '../utils/model/userdm.dart';
 
 
 

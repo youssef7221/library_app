@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:library_app/Features/home/presentation/views/tabs/favourites_screen/widgets/book_details_row.dart';
 import 'package:library_app/core/loading_overlay/loadingoverlay.dart';
 import 'package:library_app/core/shared_cubits/user_books_hive/user_books_ld_cubit.dart';
-import 'package:library_app/core/user_cubit/user_cubit.dart';
+import '../../../../../../core/shared_cubits/user_cubit/user_cubit.dart';
 import '../../../../../../core/utils/app_color.dart';
 import '../../../../../../core/utils/app_fonts.dart';
 

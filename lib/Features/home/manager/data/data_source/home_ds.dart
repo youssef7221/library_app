@@ -6,5 +6,5 @@ abstract class HomeDs{
 Future<Either<Failure,List<BookModel>>> fetchFeaturedBooks();
 Future<Either<Failure,List<BookModel>>> fetchSearchBooks(String book);
 Future<Either<Failure,List<BookModel>>> fetchSmallFeaturedBooks();
-Future <Either<Failure,BookModel>> fetchSpecificBook(String bookId);
+Future <Either<Failure,BookModel>> fetchSpecificBook(String? bookId);
 }

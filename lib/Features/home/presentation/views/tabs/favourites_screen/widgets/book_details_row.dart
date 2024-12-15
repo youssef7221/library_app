@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:library_app/Features/home/manager/data/models/book_model/book_model.dart';
 import 'package:library_app/Features/home/presentation/views/tabs/favourites_screen/widgets/remove_dialog.dart';
 import 'package:library_app/core/book_model/MyBookModelHive.dart';
 import 'package:library_app/core/router/app_router.dart';
 
-import '../../../../../../../core/shared_cubits/user_books_hive/user_books_ld_cubit.dart';
-import '../../../../../../../core/user_cubit/user_cubit.dart';
 import '../../../../../../../core/utils/app_color.dart';
 import '../../../../../../../core/utils/app_fonts.dart';
-import '../../../widgets/custom_book_item.dart';
+import '../../../../../../../core/widgets/custom_book_item.dart';
 
 class BookDetailsRow extends StatelessWidget {
   const BookDetailsRow({super.key, required this.selectedBook});

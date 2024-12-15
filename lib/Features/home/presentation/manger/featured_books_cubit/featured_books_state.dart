@@ -13,11 +13,16 @@ class FeaturedBooksLoading extends FeaturedBooksState {}
 
 class FeaturedBooksFailure extends FeaturedBooksState {
   final String errMessage;
+
   const FeaturedBooksFailure(this.errMessage);
 }
-class FeaturedBooksSuccess extends FeaturedBooksState {
-}
+
+class FeaturedBooksSuccess extends FeaturedBooksState {}
+
 class SmallFeaturedBooksLoading extends FeaturedBooksState {}
 
-class SmallFeaturedBooksSuccess extends FeaturedBooksState {
-}
+class SmallFeaturedBooksSuccess extends FeaturedBooksState {}
+
+class FetchBookLoading extends FeaturedBooksState {}
+
+class FetchBookSuccess extends FeaturedBooksState {}
