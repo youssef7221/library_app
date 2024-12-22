@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:library_app/Features/home/presentation/views/tabs/favourites_screen/favourites_screen.dart';
 import 'package:library_app/Features/home/presentation/views/tabs/home_screen/home_screen.dart';
+import 'package:library_app/Features/home/presentation/views/tabs/my_books_screen/my_books_screen.dart';
 import 'package:library_app/Features/home/presentation/views/tabs/settings_screen/settings_screen.dart';
 import 'package:library_app/core/flutter_secure/flutter_secure.dart';
 import 'package:library_app/core/service_locator/service_locator.dart';
@@ -23,6 +24,7 @@ class NavigationCubit extends Cubit<NavigationState> {
   List<Widget> tabs = [
     HomeScreen(),
     const FavouritesScreen(),
+    const MyBooksScreen(),
     const SettingsScreen()
   ];
  final storage = getIt<SecureStorageManager>();
@@ -38,6 +40,13 @@ class NavigationCubit extends Cubit<NavigationState> {
       PersistentBottomNavBarItem(
         icon:const Icon(Icons.favorite),
         title: ("Favourites"),
+        activeColorPrimary: AppColors.primaryColor,
+        inactiveColorPrimary: AppColors.blackColor,
+        activeColorSecondary: Colors.white,
+      ),
+      PersistentBottomNavBarItem(
+        icon:const Icon(Icons.library_books),
+        title: ("My Books"),
         activeColorPrimary: AppColors.primaryColor,
         inactiveColorPrimary: AppColors.blackColor,
         activeColorSecondary: Colors.white,

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:library_app/Features/search_screen/widgets/search_result_list.dart';
 import 'package:library_app/core/service_locator/service_locator.dart';
+import 'package:library_app/core/widgets/bottom_navbar.dart';
 import 'package:library_app/core/widgets/custom_loading_indicator.dart';
 import 'package:library_app/core/widgets/error_widget.dart';
 import '../home/presentation/manger/search_books_cubit/search_books_cubit.dart';
@@ -24,7 +26,7 @@ class SearchScreen extends StatelessWidget {
                   children: [
                     CustomSearchTextField(),
                     SizedBox(
-                      height: 16,
+                      height: 16.h,
                     ),
                     if (state is SearchBooksSuccess)
                     Expanded(

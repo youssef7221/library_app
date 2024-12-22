@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../../core/utils/app_color.dart';
 import '../../../../../../core/utils/app_fonts.dart';
@@ -11,10 +12,10 @@ class BookDetailsPaymentCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(15),
+      padding:  EdgeInsets.all(15.r),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(15),
+        borderRadius: BorderRadius.circular(15.r),
         boxShadow: [
           BoxShadow(
             color: Colors.grey.withOpacity(0.1),
@@ -28,14 +29,14 @@ class BookDetailsPaymentCard extends StatelessWidget {
         children: [
           // Book Thumbnail
           Container(
-            width: 80,
-            height: 120,
+            width: 80.w,
+            height: 110.h,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(10.r),
             ),
             child: CustomBookImage(imageUrl: selectedBook.volumeInfo.imageLinks!.thumbnail),
           ),
-          const SizedBox(width: 15),
+          SizedBox(width: 15.w),
           // Book Details
           Expanded(
             child: Column(
@@ -43,20 +44,20 @@ class BookDetailsPaymentCard extends StatelessWidget {
               children: [
                 Text(
                   selectedBook.volumeInfo.title ?? 'Unknown Book',
-                  style: AppFonts.boldFont.copyWith(fontSize: 16),
+                  style: AppFonts.boldFont.copyWith(fontSize: 16.sp),
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                 ),
-                const SizedBox(height: 5),
+                SizedBox(height: 5.h),
                 Text(
                  selectedBook.volumeInfo.authors?.first ?? 'Unknown Author',
                   style: AppFonts.smallFont.copyWith(color: Colors.grey),
                 ),
-                const SizedBox(height: 10),
+                SizedBox(height: 10.h),
                 Text(
                   '${selectedBook.saleInfo?.listPrice?.amount?.truncate() ?? 600} EGP',
                   style: AppFonts.boldFont.copyWith(
-                    fontSize: 18,
+                    fontSize: 18.sp,
                     color: AppColors.primaryColor,
                   ),
                 ),

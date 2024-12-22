@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:library_app/Features/home/manager/data/models/book_model/book_model.dart';
 import 'package:library_app/Features/home/presentation/views/book_details/widgets/background_book.dart';
 import 'package:library_app/Features/home/presentation/views/book_details/widgets/books_app_bar.dart';
@@ -13,18 +14,18 @@ class BookDetailsScreen extends StatelessWidget {
   final BookModel selectedBook;
 
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
         children: [
           BackgroundBook(
               imgUrl: selectedBook.volumeInfo.imageLinks?.thumbnail ?? ""),
           Padding(
-            padding: const EdgeInsets.only(
-              top: 40,
-              left: 20,
-              right: 20,
-              bottom: 10,
+            padding: EdgeInsets.only(
+              top: 40.h,
+              left: 20.w,
+              right: 20.w,
+              bottom: 10.h,
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -32,8 +33,8 @@ class BookDetailsScreen extends StatelessWidget {
                 BooksAppBar(
                     bookName: selectedBook.volumeInfo.title,
                     bookAuthor: selectedBook.volumeInfo.authors?.first),
-                const SizedBox(
-                  height: 10,
+                SizedBox(
+                  height: 10.h,
                 ),
                 Hero(
                   tag: "thumbnail${selectedBook.id}",
@@ -51,19 +52,19 @@ class BookDetailsScreen extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: 50,
+                  height: 10.h,
                 ),
                 DetailsWidget(
                     rating: selectedBook.volumeInfo.averageRating,
                     category: selectedBook.volumeInfo.categories?.first,
                     pageCount: selectedBook.volumeInfo.pageCount),
                 SizedBox(
-                  height: 10,
+                  height: 5.h,
                 ),
                 DescriptionWidget(
                     description: selectedBook.volumeInfo.description),
                 SizedBox(
-                  height: 10,
+                  height: 10.h,
                 ),
                 BuyNowWidget(
                   selectedBook: selectedBook,

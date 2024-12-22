@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:library_app/Features/home/presentation/views/tabs/favourites_screen/widgets/remove_dialog.dart';
 import 'package:library_app/core/book_model/MyBookModelHive.dart';
@@ -16,10 +17,10 @@ class BookDetailsRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(bottom: 15),
+      margin:EdgeInsets.only(bottom: 15.h),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(12.r),
         boxShadow: [
           BoxShadow(
             color: Colors.grey.withOpacity(0.2),
@@ -33,11 +34,11 @@ class BookDetailsRow extends StatelessWidget {
         children: [
           // Book Thumbnail
           Container(
-            width: 100,
-            height: 150,
-            margin: const EdgeInsets.all(10),
+            width: 100.w,
+            height: 125.h,
+            margin: EdgeInsets.all(10.r),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8),
+              borderRadius: BorderRadius.circular(8.r),
             ),
             child: InkWell(
               onTap: () {
@@ -49,30 +50,30 @@ class BookDetailsRow extends StatelessWidget {
           // Book Details
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+              padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     selectedBook.title,
                     style: AppFonts.boldFont.copyWith(
-                      fontSize: 18,
+                      fontSize: 18.sp,
                       color: AppColors.blackColor,
                     ),
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                   ),
-                  const SizedBox(height: 5),
+                  SizedBox(height: 5.h),
                   Text(
                     selectedBook.author ?? 'Unknown Author',
                     style: AppFonts.smallFont.copyWith(
-                      fontSize: 14,
+                      fontSize: 14.sp,
                       color: Colors.grey[600],
                     ),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
-                  const SizedBox(height: 10),
+                   SizedBox(height: 10.h),
                   // Optional: Add more details or actions
                   Row(
                     children: [

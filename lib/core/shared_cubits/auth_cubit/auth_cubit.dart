@@ -85,7 +85,7 @@ class AuthCubit extends Cubit<AuthState> {
           focusNode.unfocus();
           GoRouter.of(context).replace(AppRouter.kLoginView);
         },
-        (error) {
+        (error){
           setError(error.toString());
         },
       );

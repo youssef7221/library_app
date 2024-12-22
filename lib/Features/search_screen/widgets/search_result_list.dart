@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:library_app/core/widgets/bottom_navbar.dart';
 import 'package:library_app/core/widgets/custom_book_view.dart';
 
 import '../../home/manager/data/models/book_model/book_model.dart';
@@ -15,7 +17,7 @@ class SearchResultListView extends StatelessWidget {
       itemBuilder: (context, index) {
         return Padding(
           padding: const EdgeInsets.symmetric(vertical: 10,horizontal: 10),
-          child: CustomBookView(books: books?[index], index: index,width: 300,)
+          child: CustomBookView(books: books?[index], index: index)
         );
       },
     );

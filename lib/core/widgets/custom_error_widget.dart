@@ -1,5 +1,4 @@
-import 'package:library_app/core/utils/styles.dart';
-
+import 'package:library_app/core/utils/app_fonts.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/material.dart';
@@ -12,7 +11,7 @@ class CustomErrorWidget extends StatelessWidget {
     return Center(
       child: Text(
         errMessage,
-        style: Styles.textStyle18,
+        style: AppFonts.boldFont,
         textAlign: TextAlign.center,
       ),
     );

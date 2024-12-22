@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../core/router/app_router.dart';
@@ -19,8 +20,8 @@ class SignUpLine extends StatelessWidget {
           style: AppFonts.smallFont
               .copyWith(color: AppColors.primaryColor),
         ),
-        const SizedBox(
-          width: 10,
+         SizedBox(
+          width: 10.w,
         ),
         GestureDetector(
           onTap: () => GoRouter.of(context)

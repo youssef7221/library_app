@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:library_app/Features/login/presentation/widgets/loginbuttons.dart';
 import 'package:library_app/Features/login/presentation/widgets/signupline.dart';
 import '../../../../core/shared_cubits/auth_cubit/auth_cubit.dart';
@@ -15,23 +16,23 @@ class LoginForm extends StatelessWidget {
     return  Form(
       key: cubit.formKey,
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 50),
+        padding:  EdgeInsets.symmetric(vertical: 50.h),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               ConstrainedBox(
                 constraints:
-                BoxConstraints(maxHeight: 180, maxWidth: 200),
+                BoxConstraints(maxHeight: 180.h, maxWidth: 200.w),
                 child: Logo(
-                  logoHeight: 100,
+                  logoHeight: 100.h,
                 ),
               ),
-              const SizedBox(
-                height: 30,
+               SizedBox(
+                height: 30.h,
               ),
               SizedBox(
-                width: 300,
+                width: 300.w,
                 child: CustomTextField(
                   hintText: "Enter Your Email",
                   prefixIcon: const Icon(Icons.person),
@@ -42,11 +43,11 @@ class LoginForm extends StatelessWidget {
                   keyboardType: TextInputType.text,
                 ),
               ),
-              const SizedBox(
-                height: 30,
+               SizedBox(
+                height: 30.h,
               ),
               SizedBox(
-                width: 300,
+                width: 300.w,
                 child: CustomTextField(
                   hintText: "Enter Your Password",
                   validator: Validators.passwordValidate,
@@ -57,12 +58,12 @@ class LoginForm extends StatelessWidget {
                       .passwordTextEditingController, // Use the `controller` parameter
                 ),
               ),
-              const SizedBox(
-                height: 30,
+              SizedBox(
+                height: 30.h,
               ),
               LoginButtons(),
-              const SizedBox(
-                height: 40,
+              SizedBox(
+                height: 40.h,
               ),
               SignUpLine()
             ],

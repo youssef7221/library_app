@@ -10,7 +10,6 @@ import 'package:library_app/Features/home/presentation/manger/featured_books_cub
 import 'package:library_app/Features/home/presentation/views/payment_screen/manager/payment_methods_cubit.dart';
 import 'package:library_app/core/flutter_secure/flutter_secure.dart';
 import 'package:library_app/core/hive_service/hive_service.dart';
-import 'package:library_app/core/shared_cubits/user_books_hive/user_books_ld_cubit.dart';
 import '../../Features/home/manager/data/data_source/home_ds.dart';
 import '../../Features/home/manager/data/repos/home_repo_impl.dart';
 import '../../Features/home/manager/domain/usecase/SearchBooksUseCase.dart';
@@ -61,9 +60,6 @@ void setupServiceLocator() {
   );
   getIt.registerFactory<SearchBooksCubit>(
     () => SearchBooksCubit(),
-  );
-  getIt.registerFactory<UserBooksLdCubit>(
-    () => UserBooksLdCubit(),
   );
   getIt.registerFactory<PaymentMethodsCubit>(
         () => PaymentMethodsCubit(),

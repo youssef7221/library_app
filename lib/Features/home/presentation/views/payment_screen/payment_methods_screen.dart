@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:library_app/Features/home/presentation/views/payment_screen/manager/payment_methods_cubit.dart';
@@ -31,7 +32,7 @@ class PaymentMethodsScreen extends StatelessWidget {
         ),
         title: Text(
           'Payment Methods',
-          style: AppFonts.boldFont.copyWith(fontSize: 20),
+          style: AppFonts.boldFont.copyWith(fontSize: 20.sp),
         ),
       ),
       body: BlocProvider(
@@ -40,7 +41,7 @@ class PaymentMethodsScreen extends StatelessWidget {
           listener: (context, state) {},
           builder: (context, state) {
             return Padding(
-              padding: const EdgeInsets.all(20.0),
+              padding: EdgeInsets.all(20.r),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -48,13 +49,13 @@ class PaymentMethodsScreen extends StatelessWidget {
                   BookDetailsPaymentCard(
                     selectedBook: selectedBook,
                   ),
-                  const SizedBox(height: 20),
+                  SizedBox(height: 20.h),
                   // Payment Methods Title
                   Text(
                     'Select Payment Method',
-                    style: AppFonts.boldFont.copyWith(fontSize: 18),
+                    style: AppFonts.boldFont.copyWith(fontSize: 18.sp),
                   ),
-                  const SizedBox(height: 15),
+                  SizedBox(height: 15.h),
                   // Payment Methods List
                   Expanded(
                     child: ListView.separated(
@@ -63,7 +64,7 @@ class PaymentMethodsScreen extends StatelessWidget {
                           .paymentMethods
                           .length,
                       separatorBuilder: (context, index) =>
-                          const SizedBox(height: 15),
+                           SizedBox(height: 10.h),
                       itemBuilder: (context, index) {
                         final method = context
                             .read<PaymentMethodsCubit>()
@@ -74,7 +75,7 @@ class PaymentMethodsScreen extends StatelessWidget {
                       },
                     ),
                   ),
-                  ConfirmPaymentButton(bookName: selectedBook.volumeInfo.title,)
+                  ConfirmPaymentButton(bookModel: selectedBook,)
                 ],
               ),
             );

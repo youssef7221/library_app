@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:go_router/go_router.dart';
 import 'package:library_app/Features/home/presentation/views/tabs/settings_screen/widgets/settings_row.dart';
@@ -21,7 +22,7 @@ class SettingsScreen extends StatelessWidget {
       body: BlocBuilder<UserCubit, UserState>(
         builder: (context, state) {
           return Padding(
-            padding: EdgeInsets.symmetric(vertical: 40, horizontal: 20),
+            padding: EdgeInsets.symmetric(vertical: 40.h, horizontal: 20.w),
             child: Column(
               children: [
                 Row(
@@ -29,35 +30,31 @@ class SettingsScreen extends StatelessWidget {
                     Icon(
                       Icons.arrow_back,
                       color: AppColors.blackColor,
-                      size: 24,
+                      size: 24.r,
                     ),
                     SizedBox(
-                      width: 10,
+                      width: 10.w,
                     ),
                     Text(
                       "Settings",
-                      style: AppFonts.boldFont.copyWith(fontSize: 26),
+                      style: AppFonts.boldFont.copyWith(fontSize: 26.sp),
                     )
                   ],
                 ),
                 SizedBox(
-                  height: 30,
+                  height: 15.h,
                 ),
                 SettingsRow(label: "Account Settings"),
                 SizedBox(
-                  height: 20,
-                ),
-                SettingsRow(label: "Act As Seller"),
-                SizedBox(
-                  height: 20,
+                  height: 15.h,
                 ),
                 SettingsRow(label: "Help & Support"),
                 SizedBox(
-                  height: 20,
+                  height: 15.h,
                 ),
                 SettingsRow(label: "Theme mode"),
                 SizedBox(
-                  height: 20,
+                  height: 15.h,
                 ),
                 InkWell(
                     onTap: () {

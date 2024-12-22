@@ -1,31 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:library_app/core/loading_overlay/loadingoverlay.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 import '../../../../../../core/shared_cubits/user_cubit/user_cubit.dart';
 import '../../../../../../core/shared_cubits/user_cubit/user_state.dart';
+import '../../../../../../core/utils/app_color.dart';
 import '../../../../../../core/utils/app_fonts.dart';
-import 'widgets/book_details_row.dart';
+import 'widgets/custom_my_book_view.dart';
 
-class FavouritesScreen extends StatefulWidget {
-  const FavouritesScreen({super.key});
+class MyBooksScreen extends StatefulWidget {
+  const MyBooksScreen({super.key});
 
   @override
-  State<FavouritesScreen> createState() => _FavouritesScreenState();
+  State<MyBooksScreen> createState() => _MyBooksScreenState();
 }
 
-class _FavouritesScreenState extends State<FavouritesScreen> {
-  bool _hasLoadedFavourites = false;
-
+class _MyBooksScreenState extends State<MyBooksScreen> {
+  bool _hasLoadedBooks = false;
   @override
   void initState() {
     super.initState();
-    // Ensure favourite books are loaded only once
-    if (!_hasLoadedFavourites) {
-      context.read<UserCubit>().loadFavouriteBooks();
-      _hasLoadedFavourites = true;
-    }
+    context.read<UserCubit>().loadOwnedBooks(context);
+    _hasLoadedBooks = true;
   }
-
   @override
   Widget build(BuildContext context) {
     final userCubit = context.read<UserCubit>();
@@ -34,29 +32,45 @@ class _FavouritesScreenState extends State<FavouritesScreen> {
         padding: EdgeInsets.symmetric(vertical: 40.h, horizontal: 20.w),
         child: Column(
           children: [
-            // Header Row
             Row(
               children: [
                 SizedBox(width: 10.w),
                 Text(
-                  "Favourites",
+                  "My Books",
                   style: AppFonts.boldFont.copyWith(fontSize: 26.sp),
                 ),
               ],
             ),
             SizedBox(height: 20.h),
-            // BlocBuilder for rendering states
             Expanded(
               child: BlocBuilder<UserCubit, UserState>(
                 builder: (context, state) {
                   if (state is LoadingBooks) {
-                    return const Center(child: CircularProgressIndicator());
-                  } else if (userCubit.favouritesBooks.isNotEmpty) {
-                    return ListView.builder(
-                      itemCount: userCubit.favouritesBooks.length,
+                    return Center(
+                      child: LoadingAnimationWidget.inkDrop(
+                        color: AppColors.blackColor,
+                        size: 40,
+                      ),
+                    );
+                  }else if (userCubit.ownedBooks.isNotEmpty) {
+                    return GridView.builder(
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        childAspectRatio: 9 / 16,
+                        mainAxisSpacing: 10,
+                      ),
+                      padding: EdgeInsets.zero,
+                      itemCount: userCubit.ownedBooks.length,
                       itemBuilder: (context, index) {
-                        final book = userCubit.favouritesBooks[index];
-                        return BookDetailsRow(selectedBook: book);
+                        final book = userCubit.ownedBooks[index];
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 10, horizontal: 10),
+                          child: CustomMyBookView(
+                            book: book,
+                          ),
+                        );
                       },
                     );
                   } else if (state is UserError) {
@@ -66,14 +80,15 @@ class _FavouritesScreenState extends State<FavouritesScreen> {
                         style: AppFonts.boldFont.copyWith(fontSize: 16.sp),
                       ),
                     );
-                  } else if (userCubit.favouritesBooks.isEmpty) {
+                  }  else if (userCubit.ownedBooks.isEmpty) {
                     return Center(
                       child: Text(
-                        "No books found in favourites.",
+                        "No books found in My Books.",
                         style: AppFonts.boldFont.copyWith(fontSize: 16.sp),
                       ),
                     );
-                  } else {
+                  }
+                  else {
                     return Center(
                       child: Text(
                         "Something went wrong.",

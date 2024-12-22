@@ -2,12 +2,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../utils/model/userdm.dart';
 
-class FirebaseService{
+class FirebaseService {
   static CollectionReference<UserModel> getUsersCollection() {
     return FirebaseFirestore.instance
         .collection("Users")
-        .withConverter<UserModel>(fromFirestore: (snapshot,
-        _) {
+        .withConverter<UserModel>(fromFirestore: (snapshot, _) {
       return UserModel.fromjson(snapshot.data()!);
     }, toFirestore: (value, _) {
       return value.tojson();
@@ -20,21 +19,43 @@ class FirebaseService{
     return doc.set(user);
   }
 
+  Future<void> addBookToUser(
+      String? userId, String? bookId, Function onError) async {
+    try {
+      var userDoc = getUsersCollection().doc(userId);
+      await userDoc.update({
+        'books': FieldValue.arrayUnion([bookId])
+      });
+    } catch (e) {
+      onError(e.toString());
+    }
+  }
+
 // Helper function to derive name from email
   static String deriveNameFromEmail(String? email) {
     if (email == null || email.isEmpty) return "Anonymous";
     // Extract the part before the "@" and replace numbers with spaces
     String rawName = email.split('@').first.replaceAll(RegExp(r'\d'), ' ');
     // Capitalize each part of the name
-    List<String> nameParts = rawName.split(' ').where((part) => part.isNotEmpty).toList();
-    return nameParts.map((part) => part[0].toUpperCase() + part.substring(1)).join(' ');
+    List<String> nameParts =
+        rawName.split(' ').where((part) => part.isNotEmpty).toList();
+    return nameParts
+        .map((part) => part[0].toUpperCase() + part.substring(1))
+        .join(' ');
   }
 
-   Future<UserModel?> readUser(String id) async {
-    DocumentSnapshot<UserModel> userDoc =
-    await getUsersCollection().doc(id).get();
-    return userDoc.data();
+  Future<UserModel?> readUser(String? id) async {
+    try {
+      DocumentSnapshot<UserModel> userDoc = await getUsersCollection()
+          .doc(id)
+          .get(const GetOptions(source: Source.server)); // Force server fetch
+      return userDoc.data();
+    } catch (e) {
+      print("Error fetching user: $e");
+      return null; // Handle the error appropriately in your app
+    }
   }
+
 // static CollectionReference<SellerModel> getSellerCollection() {
 //   return FirebaseFirestore.instance
 //       .collection("Seller")

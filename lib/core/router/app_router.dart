@@ -1,6 +1,7 @@
 import 'package:library_app/Features/home/presentation/views/book_details/book_details_screen.dart';
 import 'package:library_app/Features/home/presentation/views/home_view.dart';
 import 'package:library_app/Features/home/presentation/views/payment_screen/payment_methods_screen.dart';
+import 'package:library_app/Features/home/presentation/views/tabs/my_books_screen/my_books_screen.dart';
 import 'package:library_app/Features/login/presentation/view/login_screen.dart';
 import 'package:library_app/Features/register/presentation/view/register_screen.dart';
 import 'package:go_router/go_router.dart';
@@ -15,6 +16,7 @@ abstract class AppRouter {
   static const kRegisterView = '/register';
   static const kHomeDetailsView = '/homeDetailsView';
   static const kPaymentView = '/paymentView';
+  static const kMyBooksView = "/myBooksView";
 
   static final router = GoRouter(routes: [
     GoRoute(
@@ -36,6 +38,10 @@ abstract class AppRouter {
     GoRoute(
       path: kRegisterView,
       builder: (context, state) => const RegisterScreen(),
+    ),
+    GoRoute(
+      path: kMyBooksView,
+      builder: (context, state) => const MyBooksScreen(),
     ),
     GoRoute(
       path: kPaymentView,

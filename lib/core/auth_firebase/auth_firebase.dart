@@ -14,7 +14,7 @@ class AuthFirebase {
         password: password,
       );
       UserModel userModel = UserModel(
-          name: name, email: email, age: age, id: credential.user!.uid);
+          name: name, email: email, age: age, id: credential.user!.uid,books:[]);
       FirebaseService.addUserCollection(userModel);
       onSuccess();
     } on FirebaseAuthException catch (e) {
@@ -58,6 +58,7 @@ class AuthFirebase {
             email: user.email ?? "",
             age: 0,
             id: user.uid,
+            books:[]
           );
           await FirebaseService.addUserCollection(userModel);
         }

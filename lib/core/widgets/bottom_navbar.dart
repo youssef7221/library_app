@@ -22,9 +22,9 @@ class BottomNavBar extends StatelessWidget {
       hideNavigationBarWhenKeyboardAppears: true,
       popBehaviorOnSelectedNavBarItemPress: PopBehavior.all,
       decoration: NavBarDecoration(
-        borderRadius: BorderRadius.circular(15),
+        borderRadius: BorderRadius.circular(15.r),
       ),
-      padding:  EdgeInsets.only(bottom: 8),
+      padding:  EdgeInsets.only(bottom: 8.h),
       backgroundColor:Colors.white,
       isVisible: true,
       animationSettings: const NavBarAnimationSettings(
@@ -39,7 +39,7 @@ class BottomNavBar extends StatelessWidget {
         ),
       ),
       confineToSafeArea: false,
-      navBarHeight: 60,
+      navBarHeight: 50.h,
       navBarStyle: NavBarStyle.style7, // Choose the nav bar style with this property
     );
   }

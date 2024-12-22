@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../utils/app_color.dart';
@@ -19,16 +20,16 @@ class CustomButton extends StatelessWidget {
     return InkWell(
       child: Center(
         child: Container(
-          height: 50,
-          width: 140,
+          height: 40.h,
+          width: 140.w,
           decoration: BoxDecoration(
             color: buttonColor,
-              borderRadius: BorderRadius.circular(20)
+              borderRadius: BorderRadius.circular(20.r)
           ),
           child: haveIcon ? Row(
             children: [
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 15),
+                padding: EdgeInsets.symmetric(horizontal: 15.w),
                 child: Icon(FontAwesomeIcons.google,size: 30,color:AppColors.grey,),
               ),
               Center(child: Text(text,style: AppFonts.buttonFont.copyWith(

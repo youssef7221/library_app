@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:library_app/Features/home/presentation/views/payment_screen/manager/payment_methods_cubit.dart';
 import 'package:library_app/Features/home/presentation/views/payment_screen/payment_methods_screen.dart';
@@ -20,18 +21,18 @@ class PaymentMethodTile extends StatelessWidget {
         cubit.changeMethod(method);
       },
       child: Container(
-        padding: const EdgeInsets.all(15),
+        padding:EdgeInsets.all(15.r),
         decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(15),
+          borderRadius: BorderRadius.circular(15.r),
           border: Border.all(
             color: isSelected ? AppColors.primaryColor : Colors.transparent,
-            width: 2,
+            width: 2.w,
           ),
           boxShadow: [
             BoxShadow(
               color: Colors.grey.withOpacity(0.1),
-              spreadRadius: 2,
+              spreadRadius: 2.r,
               blurRadius: 5,
               offset: const Offset(0, 3),
             ),
@@ -39,13 +40,12 @@ class PaymentMethodTile extends StatelessWidget {
         ),
         child: Row(
           children: [
-            // Payment Method Icon
             SvgPicture.asset(
               method.icon,
-              width: 40,
-              height: 40,
+              width: 40.w,
+              height: 40.h,
             ),
-            const SizedBox(width: 15),
+            SizedBox(width: 15.w),
             // Payment Method Details
             Expanded(
               child: Column(
@@ -54,7 +54,7 @@ class PaymentMethodTile extends StatelessWidget {
                   Text(
                     method.name,
                     style: AppFonts.boldFont.copyWith(
-                      fontSize: 16,
+                      fontSize: 16.sp,
                       color: isSelected
                           ? AppColors.primaryColor
                           : AppColors.blackColor,

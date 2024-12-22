@@ -39,7 +39,8 @@ class PaymentMethodsCubit extends Cubit<PaymentMethodsState> {
   bool isMethodSelected(PaymentMethod method) {
     return selectedPaymentMethod == method;
   }
-  void showPaymentConfirmationDialog(BuildContext context, String?bookName) {
+
+  void showPaymentConfirmationDialog(BuildContext context, String? bookName) {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
@@ -67,20 +68,18 @@ class PaymentMethodsCubit extends Cubit<PaymentMethodsState> {
     );
   }
 
-  void proceedWithPayment(BuildContext context,String? bookName){
+  void proceedWithPayment(BuildContext context, String? bookName) {
     switch (selectedPaymentMethod?.name) {
       case 'Credit Card':
-      // Navigate to credit card input screen
+        // Navigate to credit card input screen
         break;
       case 'PayPal':
-      // Initiate PayPal payment
+        // Initiate PayPal payment
         break;
       case 'Apple Pay':
-      // Initiate Apple Pay
+        // Initiate Apple Pay
         break;
     }
-    showPaymentConfirmationDialog(context,bookName);
+    showPaymentConfirmationDialog(context, bookName);
   }
-
 }
-

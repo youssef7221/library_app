@@ -7,7 +7,7 @@ import '../../../../../../../core/shared_cubits/user_cubit/user_cubit.dart';
 import '../../../../../../../core/utils/app_fonts.dart';
 
 class RemoveDialog {
- static void showRemoveBookDialog(BuildContext context, String? bookId) {
+  static void showRemoveBookDialog(BuildContext context, String? bookId) {
     showDialog(
       context: context,
       builder: (dialogContext) => AlertDialog(
@@ -28,12 +28,13 @@ class RemoveDialog {
             ),
           ),
           ElevatedButton(
-            style: ElevatedButton.styleFrom(backgroundColor: AppColors.redColor),
+            style:
+                ElevatedButton.styleFrom(backgroundColor: AppColors.redColor),
             onPressed: () {
-              context.read<UserBooksLdCubit>().deleteBook(
-                bookId,
-                context.read<UserCubit>().userModel?.id,
-              );
+              context.read<UserCubit>().deleteBook(
+                    bookId,
+                    context.read<UserCubit>().userModel?.id,
+                  );
               Navigator.of(dialogContext).pop();
             },
             child: Text(
