@@ -7,7 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:flutter/services.dart';
 import 'core/observer/my_bloc_observer.dart';
 import 'core/router/app_router.dart';
 import 'core/shared_cubits/user_cubit/user_cubit.dart';
@@ -17,6 +17,10 @@ void main() async {
   await Firebase.initializeApp();
   Bloc.observer = MyBlocObserver();
   setupServiceLocator();
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
   await getIt<HiveService>().initHive();
   runApp(const LibraryApp());
 }
