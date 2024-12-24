@@ -8,7 +8,7 @@ abstract class UserState extends Equatable {
   const UserState();
 
   @override
-  List<Object> get props => [];
+  List<Object?> get props => [];
 }
 
 class UserInitial extends UserState {}
@@ -22,21 +22,40 @@ class UserDeleted extends UserState {}
 class UserError extends UserState {
   final String message;
 
-  UserError(this.message);
+  const UserError(this.message);
+
+  @override
+  List<Object?> get props => [message];
 }
 
-final class DeleteBookMarkedBook extends UserState {}
+class DeleteBookMarkedBook extends UserState {
+  final String? bookId;
 
-final class AddedBookMarkedBook extends UserState {}
+  const DeleteBookMarkedBook({required this.bookId});
 
-final class GetFavouriteBooksSuccess extends UserState {}
+  @override
+  List<Object?> get props => [bookId];
+}
 
-final class LoadingBooks extends UserState {}
+class AddedBookMarkedBook extends UserState {
+  final String? bookId;
 
-final class UserFavouriteBooksEmpty extends UserState {}
+  const AddedBookMarkedBook({required this.bookId});
 
-final class GetOwnedBooksSuccess extends UserState {}
+  @override
+  List<Object?> get props => [bookId];
+}
 
-final class UserOwnedBooksEmpty extends UserState {}
+class BookMarkedUpdated extends UserState {}
 
-final class AddBookSuccess extends UserState {}
+class GetFavouriteBooksSuccess extends UserState {}
+
+class LoadingBooks extends UserState {}
+
+class UserFavouriteBooksEmpty extends UserState {}
+
+class GetOwnedBooksSuccess extends UserState {}
+
+class UserOwnedBooksEmpty extends UserState {}
+
+class AddBookSuccess extends UserState {}

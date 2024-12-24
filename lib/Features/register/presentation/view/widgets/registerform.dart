@@ -38,7 +38,7 @@ class RegisterForm extends StatelessWidget {
                   keyboardType: TextInputType.text,
                 ),
               ),
-               SizedBox(height: 30.h),
+              SizedBox(height: 30.h),
               SizedBox(
                 width: 300.w,
                 child: CustomTextField(
@@ -51,7 +51,7 @@ class RegisterForm extends StatelessWidget {
                   keyboardType: TextInputType.text,
                 ),
               ),
-               SizedBox(height: 30.h),
+              SizedBox(height: 30.h),
               SizedBox(
                 width: 300.w,
                 child: CustomTextField(
@@ -65,7 +65,7 @@ class RegisterForm extends StatelessWidget {
                   obscureText: true,
                 ),
               ),
-               SizedBox(height: 30.h),
+              SizedBox(height: 30.h),
               SizedBox(
                 width: 300.w,
                 child: CustomTextField(

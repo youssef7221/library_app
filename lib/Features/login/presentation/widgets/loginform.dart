@@ -12,7 +12,7 @@ class LoginForm extends StatelessWidget {
   const LoginForm({super.key});
   @override
   Widget build(BuildContext context) {
-   final cubit = context.read<AuthCubit>();
+    final cubit = context.read<AuthCubit>();
     return  Form(
       key: cubit.formKey,
       child: Padding(
@@ -28,7 +28,7 @@ class LoginForm extends StatelessWidget {
                   logoHeight: 100.h,
                 ),
               ),
-               SizedBox(
+              SizedBox(
                 height: 30.h,
               ),
               SizedBox(
@@ -43,7 +43,7 @@ class LoginForm extends StatelessWidget {
                   keyboardType: TextInputType.text,
                 ),
               ),
-               SizedBox(
+              SizedBox(
                 height: 30.h,
               ),
               SizedBox(

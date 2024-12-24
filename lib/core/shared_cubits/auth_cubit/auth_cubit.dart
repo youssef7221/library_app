@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:library_app/core/service_locator/service_locator.dart';
 import '../../auth_firebase/auth_firebase.dart';
@@ -26,6 +27,75 @@ class AuthCubit extends Cubit<AuthState> {
 
   void setError(String error) =>
       emit(state.copyWith(isLoading: false, error: error));
+
+  void showSuccessDialog({
+    required BuildContext context,
+    required String message,
+    String? buttonText,
+    VoidCallback? onPressed,
+  }) {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return Dialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16.r),
+          ),
+          child: Container(
+            padding: EdgeInsets.all(20.w),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Container(
+                  padding: EdgeInsets.all(12.w),
+                  decoration: BoxDecoration(
+                    color: Colors.green.shade50,
+                    shape: BoxShape.circle,
+                  ),
+                  child: Icon(
+                    Icons.check_circle,
+                    color: Colors.green,
+                    size: 48.sp,
+                  ),
+                ),
+                SizedBox(height: 16.h),
+                Text(
+                  message,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 16.sp,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                SizedBox(height: 24.h),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                    GoRouter.of(context).replace(AppRouter.kLoginView);
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.green,
+                    minimumSize: Size(double.infinity, 45.h),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8.r),
+                    ),
+                  ),
+                  child: Text(
+                    buttonText ?? 'OK',
+                    style: TextStyle(
+                      fontSize: 16.sp,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
 
   void showErrorDialog(BuildContext context, String errorMessage) {
     bool isDialogOpen = true;
@@ -85,7 +155,7 @@ class AuthCubit extends Cubit<AuthState> {
           focusNode.unfocus();
           GoRouter.of(context).replace(AppRouter.kLoginView);
         },
-        (error){
+        (error) {
           setError(error.toString());
         },
       );
@@ -118,6 +188,7 @@ class AuthCubit extends Cubit<AuthState> {
           stopLoading();
           final user = FirebaseAuth.instance.currentUser;
           UserModel? userModel = await fireBaseService.readUser(user!.uid);
+          clearTextController();
           await storage.saveData("user", userModel!);
           context.read<UserCubit>().updateUser(userModel);
           // Save token and user info
@@ -128,14 +199,33 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
 
-  Future<void> handleSignOut(BuildContext context) async {
-    await FirebaseAuth.instance.signOut();
-
-    // Clear user in UserCubit
-    context.read<UserCubit>().deleteUser();
-
-    // Navigate to login screen
-    GoRouter.of(context).replace(AppRouter.kLoginView);
+  Future<void> handleChangePasword(
+      String currentPassword, String newPassword, BuildContext context) async {
+    try {
+      startLoading(); // Show loading indicator
+      await authService.changePassword(
+        currentPassword,
+        newPassword,
+        // On error
+        (error) {
+          stopLoading();
+          showErrorDialog(context, error.toString());
+        },
+        // On success
+        () async {
+          stopLoading();
+          await FirebaseAuth.instance.signOut();
+          Navigator.of(context).pop();
+          showSuccessDialog(
+              context: context,
+              message:
+                  "Password changed successfully. User signed out for security"); // Navigate to the route
+        },
+      );
+    } catch (e) {
+      stopLoading();
+      showErrorDialog(context, "Unexpected error occurred: ${e.toString()}");
+    }
   }
 
   final TextEditingController emailTextEditingController =

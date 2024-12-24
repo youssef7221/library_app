@@ -17,32 +17,24 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(create: (context) => getIt<AuthCubit>()),
-        BlocProvider(
-          create: (context) => getIt<PasswordCubit>(),
-        ),
-      ],
-      child: Scaffold(
-        body: BlocConsumer<AuthCubit, AuthState>(
-          listener: (context, state) {
-            if (state.error != null) {
-              context.read<AuthCubit>().showErrorDialog(context, state.error!);
-            }
-          },
-          builder: (context, state) {
-            return Stack(
-              children: [
-                SingleChildScrollView(
-                  child: LoginForm()
-                ),
-                if (state.isLoading)
-                  LoadingOverlay(),
-              ],
-            );
-          },
-        ),
+    return Scaffold(
+      body: BlocConsumer<AuthCubit, AuthState>(
+        listener: (context, state) {
+          if (state.error != null) {
+            context.read<AuthCubit>().showErrorDialog(context, state.error!);
+          }
+        },
+        builder: (context, state) {
+          return Stack(
+            children: [
+              SingleChildScrollView(
+                child: LoginForm()
+              ),
+              if (state.isLoading)
+                LoadingOverlay(),
+            ],
+          );
+        },
       ),
     );
   }

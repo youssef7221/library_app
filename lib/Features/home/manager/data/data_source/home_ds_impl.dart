@@ -37,6 +37,7 @@ class HomeDsImpl extends HomeDs {
           hasMore = false; // No more items
         }
       }
+      print("Featured Books : ${allBooks.length}");
       return right(allBooks);
     } catch (e) {
       if (e is DioException) {
@@ -103,7 +104,7 @@ class HomeDsImpl extends HomeDs {
           endPoint: 'volumes?Filtering=free-ebooks&q=story&startIndex='
               '$startIndex&maxResults=$maxResultsPerRequest&orderBy=newest',
         );
-        if (data['items'] != null) {
+        if (data['items'] != null){
           List<BookModel> books = (data['items'] as List<dynamic>)
               .map((item) => BookModel.fromJson(item))
               .where((item) =>
@@ -118,6 +119,7 @@ class HomeDsImpl extends HomeDs {
           hasMore = false; // No more items
         }
       }
+      print("Small Featured Books : ${allBooks.length}");
       return right(allBooks);
     } catch (e) {
       if (e is DioException) {

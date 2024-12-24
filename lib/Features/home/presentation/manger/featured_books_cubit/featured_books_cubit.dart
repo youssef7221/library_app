@@ -14,7 +14,7 @@ class FeaturedBooksCubit extends Cubit<FeaturedBooksState> {
   FeaturedBooksCubit() : super(FeaturedBooksInitial());
   final List<BookModel> featuredBooks = [];
   final List<BookModel> smallFeaturedBooks = [];
-   BookModel bookModel = BookModel(
+  BookModel bookModel = BookModel(
       volumeInfo: VolumeInfo(
           imageLinks: ImageLinks(smallThumbnail: "", thumbnail: "")));
   final featuredBooksUseCase = getIt<FeaturedBooksUseCase>();
@@ -22,31 +22,33 @@ class FeaturedBooksCubit extends Cubit<FeaturedBooksState> {
   final fetchSpecificCall = getIt<FetchSpecificCall>();
 
   Future<void> fetchFeaturedBooks() async {
+    featuredBooks.clear();
     emit(FeaturedBooksLoading());
-    var result = await featuredBooksUseCase.call();
-    result.fold(
-      (failure) {
-        emit(FeaturedBooksFailure(failure.errMessage));
-      },
-      (books) {
-        featuredBooks.addAll(books);
-        emit(FeaturedBooksSuccess());
-      },
-    );
+     var result = await featuredBooksUseCase.call();
+      result.fold(
+            (failure) {
+          emit(FeaturedBooksFailure(failure.errMessage));
+        },
+            (books) {
+              featuredBooks.addAll(books);
+          emit(FeaturedBooksSuccess());
+        },
+      );
   }
 
   Future<void> fetchSmallFeaturedBooks() async {
     emit(FeaturedBooksLoading());
-    var result = await smallFeaturedBooksUseCase.call();
-    result.fold(
-      (failure) {
-        emit(FeaturedBooksFailure(failure.errMessage));
-      },
-      (books) {
-        smallFeaturedBooks.addAll(books);
-        emit(SmallFeaturedBooksSuccess());
-      },
-    );
+    smallFeaturedBooks.clear();
+      var result = await smallFeaturedBooksUseCase.call();
+      result.fold(
+            (failure) {
+          emit(FeaturedBooksFailure(failure.errMessage));
+        },
+            (books) {
+              smallFeaturedBooks.addAll(books);
+          emit(SmallFeaturedBooksSuccess());
+        },
+      );
   }
 
   Future<void> fetchSpecificBook(String? bookId) async {

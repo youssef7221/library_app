@@ -20,8 +20,8 @@ class AppFonts{
   );
 
   static  TextStyle boldFont = GoogleFonts.montserrat(
-    fontSize: 18.sp,
-    fontWeight: FontWeight.bold,
+    fontSize: 20.sp,
+    fontWeight: FontWeight.w600,
     color: AppColors.blackColor
   );
 

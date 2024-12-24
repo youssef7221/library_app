@@ -33,7 +33,6 @@ class _LibraryAppState extends State<LibraryApp> {
     Hive.close();
     super.dispose();
   }
-
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
@@ -47,8 +46,7 @@ class _LibraryAppState extends State<LibraryApp> {
                 create: (context) => getIt<UserCubit>()..loadUser()),
             BlocProvider(
               create: (context) =>
-              getIt<FeaturedBooksCubit>()..fetchFeaturedBooks()
-                ..fetchSmallFeaturedBooks(),
+              getIt<FeaturedBooksCubit>()
             ),
           ],
           child: MaterialApp.router(

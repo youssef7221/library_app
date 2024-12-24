@@ -44,7 +44,9 @@ class SettingsScreen extends StatelessWidget {
                 SizedBox(
                   height: 15.h,
                 ),
-                SettingsRow(label: "Account Settings"),
+                InkWell(
+                  onTap: () => GoRouter.of(context).push(AppRouter.kAccountView),
+                    child: SettingsRow(label: "Account Settings")),
                 SizedBox(
                   height: 15.h,
                 ),

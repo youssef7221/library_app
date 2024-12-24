@@ -10,14 +10,12 @@ import 'package:library_app/Features/home/presentation/views/book_details/widget
 
 class BookDetailsScreen extends StatelessWidget {
   const BookDetailsScreen({required this.selectedBook, super.key});
-
   final BookModel selectedBook;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
-        children: [
+        children:[
           BackgroundBook(
               imgUrl: selectedBook.volumeInfo.imageLinks?.thumbnail ?? ""),
           Padding(

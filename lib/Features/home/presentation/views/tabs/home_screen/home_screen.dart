@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:library_app/Features/home/presentation/manger/featured_books_cubit/featured_books_cubit.dart';
@@ -9,8 +12,34 @@ import '../../../../../../core/shared_cubits/user_cubit/user_state.dart';
 import 'widgets/custom_home_app_bar.dart';
 import 'widgets/featured_list_view.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  StreamSubscription<List<ConnectivityResult>>? subscription;
+
+  @override
+  void initState() {
+    super.initState();
+    subscription = Connectivity()
+        .onConnectivityChanged
+        .listen((List<ConnectivityResult> result) {
+      if (!result.contains(ConnectivityResult.none)) {
+        context.read<FeaturedBooksCubit>().fetchSmallFeaturedBooks();
+        context.read<FeaturedBooksCubit>().fetchFeaturedBooks();
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    subscription?.cancel();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {

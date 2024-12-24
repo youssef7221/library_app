@@ -35,52 +35,49 @@ class PaymentMethodsScreen extends StatelessWidget {
           style: AppFonts.boldFont.copyWith(fontSize: 20.sp),
         ),
       ),
-      body: BlocProvider(
-        create: (context) => getIt<PaymentMethodsCubit>(),
-        child: BlocConsumer<PaymentMethodsCubit, PaymentMethodsState>(
-          listener: (context, state) {},
-          builder: (context, state) {
-            return Padding(
-              padding: EdgeInsets.all(20.r),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // Book Details Card
-                  BookDetailsPaymentCard(
-                    selectedBook: selectedBook,
-                  ),
-                  SizedBox(height: 20.h),
-                  // Payment Methods Title
-                  Text(
-                    'Select Payment Method',
-                    style: AppFonts.boldFont.copyWith(fontSize: 18.sp),
-                  ),
-                  SizedBox(height: 15.h),
-                  // Payment Methods List
-                  Expanded(
-                    child: ListView.separated(
-                      itemCount: context
+      body: BlocConsumer<PaymentMethodsCubit, PaymentMethodsState>(
+        listener: (context, state) {},
+        builder: (context, state) {
+          return Padding(
+            padding: EdgeInsets.all(20.r),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Book Details Card
+                BookDetailsPaymentCard(
+                  selectedBook: selectedBook,
+                ),
+                SizedBox(height: 20.h),
+                // Payment Methods Title
+                Text(
+                  'Select Payment Method',
+                  style: AppFonts.boldFont.copyWith(fontSize: 18.sp),
+                ),
+                SizedBox(height: 15.h),
+                // Payment Methods List
+                Expanded(
+                  child: ListView.separated(
+                    itemCount: context
+                        .read<PaymentMethodsCubit>()
+                        .paymentMethods
+                        .length,
+                    separatorBuilder: (context, index) =>
+                         SizedBox(height: 10.h),
+                    itemBuilder: (context, index) {
+                      final method = context
                           .read<PaymentMethodsCubit>()
-                          .paymentMethods
-                          .length,
-                      separatorBuilder: (context, index) =>
-                           SizedBox(height: 10.h),
-                      itemBuilder: (context, index) {
-                        final method = context
-                            .read<PaymentMethodsCubit>()
-                            .paymentMethods[index];
-                        return PaymentMethodTile(
-                          method: method,
-                        );
-                      },
-                    ),
+                          .paymentMethods[index];
+                      return PaymentMethodTile(
+                        method: method,
+                      );
+                    },
                   ),
-                  ConfirmPaymentButton(bookModel: selectedBook,)
-                ],
-              ),
-            );
-          },
-        ),
+                ),
+                ConfirmPaymentButton(bookModel: selectedBook,)
+              ],
+            ),
+          );
+        },
       ),
     );
   }

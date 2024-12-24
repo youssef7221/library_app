@@ -1,7 +1,9 @@
+import 'dart:async';
+
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:library_app/core/loading_overlay/loadingoverlay.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import '../../../../../../core/shared_cubits/user_cubit/user_cubit.dart';
 import '../../../../../../core/shared_cubits/user_cubit/user_state.dart';
@@ -17,13 +19,26 @@ class MyBooksScreen extends StatefulWidget {
 }
 
 class _MyBooksScreenState extends State<MyBooksScreen> {
-  bool _hasLoadedBooks = false;
+  StreamSubscription<List<ConnectivityResult>>? subscription;
   @override
   void initState() {
     super.initState();
     context.read<UserCubit>().loadOwnedBooks(context);
-    _hasLoadedBooks = true;
+    subscription = Connectivity()
+        .onConnectivityChanged
+        .listen((List<ConnectivityResult> result) {
+      if (!result.contains(ConnectivityResult.none)) {
+        context.read<UserCubit>().loadOwnedBooks(context);
+      }
+    });
   }
+
+  @override
+  void dispose() {
+    subscription?.cancel();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final userCubit = context.read<UserCubit>();
@@ -52,7 +67,7 @@ class _MyBooksScreenState extends State<MyBooksScreen> {
                         size: 40,
                       ),
                     );
-                  }else if (userCubit.ownedBooks.isNotEmpty) {
+                  } else if (userCubit.ownedBooks.isNotEmpty) {
                     return GridView.builder(
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
@@ -80,15 +95,14 @@ class _MyBooksScreenState extends State<MyBooksScreen> {
                         style: AppFonts.boldFont.copyWith(fontSize: 16.sp),
                       ),
                     );
-                  }  else if (userCubit.ownedBooks.isEmpty) {
+                  } else if (userCubit.ownedBooks.isEmpty) {
                     return Center(
                       child: Text(
                         "No books found in My Books.",
                         style: AppFonts.boldFont.copyWith(fontSize: 16.sp),
                       ),
                     );
-                  }
-                  else {
+                  } else {
                     return Center(
                       child: Text(
                         "Something went wrong.",

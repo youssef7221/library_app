@@ -15,32 +15,29 @@ class SearchScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocProvider(
-        create: (context) => getIt<SearchBooksCubit>(),
-        child: BlocBuilder<SearchBooksCubit, SearchBooksState>(
-          builder: (context, state) {
-              return Padding(
-                padding: const EdgeInsets.only(top: 50,left: 20,right: 20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    CustomSearchTextField(),
-                    SizedBox(
-                      height: 16.h,
-                    ),
-                    if (state is SearchBooksSuccess)
-                    Expanded(
-                      child:SearchResultListView(books: state.books),
-                    ),
-                    if (state is SearchBooksLoading)
-                      CustomLoadingIndicator()
-                    else if (state is SearchBooksFailure)
-                     MyErrorWidget()
-                  ],
-                ),
-              );
-          },
-        ),
+      body: BlocBuilder<SearchBooksCubit, SearchBooksState>(
+        builder: (context, state) {
+            return Padding(
+              padding: const EdgeInsets.only(top: 50,left: 20,right: 20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  CustomSearchTextField(),
+                  SizedBox(
+                    height: 16.h,
+                  ),
+                  if (state is SearchBooksSuccess)
+                  Expanded(
+                    child:SearchResultListView(books: state.books),
+                  ),
+                  if (state is SearchBooksLoading)
+                    CustomLoadingIndicator()
+                  else if (state is SearchBooksFailure)
+                   MyErrorWidget()
+                ],
+              ),
+            );
+        },
       ),
     );
   }
