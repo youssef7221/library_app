@@ -54,7 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    CustomHomeAppBar(),
+                    Center(child: CustomHomeAppBar()),
                     Text(
                       "New Books",
                       style: AppFonts.boldFont,
