@@ -9,7 +9,7 @@ class CustomHomeAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(top: 40.h, bottom: 20.h),
+      padding: EdgeInsets.only(top: 40.h, bottom: 20.h,left: 10.w),
       child: Row(
         children:[
           SearchWidget()
