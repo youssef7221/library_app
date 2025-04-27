@@ -27,7 +27,7 @@ final getIt = GetIt.instance;
 void setupServiceLocator() {
   getIt.registerSingleton<AuthFirebase>(AuthFirebase());
   getIt.registerSingleton<FirebaseService>(FirebaseService());
-  getIt.registerSingleton<ApiService>(ApiService(Dio()));
+  getIt.registerSingleton<ApiService>(ApiService());
   getIt.registerSingleton<HomeDs>(HomeDsImpl(
     getIt.get<ApiService>(),
   ));
